@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="firms_behaviour_styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="graphCanvas" width="1000" height="400"></canvas>
+    <script src="application.js"></script>
+    <canvas id="graphCanvas1" width="500" height="450" ></canvas>
+    <script src="application.js"></script>
+    <div class="bottom-controls">
+        <button onclick="window.location.href='index.html'">Назад</button>
+        <div class="input-group">
+            Спрос: p = <input class="form-control" id="a-input" type="number" value="1" step="0.1"> - <input class="form-control" id="b-input" type="number" value="0" step="0.1">q
+            <div class="sliders-group">
+                <label for="a-slider">a: </label>
+                <input type="range" id="a-slider" min="0" max="20" value="1" step="0.1"><span id="a-value"></span><br>
+                <label for="b-slider">b: </label>
+                <input type="range" id="b-slider" min="0" max="30" value="0" step="0.1"><span id="b-value"></span>
+            </div>
+        </div>
+        <div class="input-group">Издержки: TC = <input class="form-control" id="a1-input" type="number" value="1" step="0.1">q^2 + <input class="form-control" id="b1-input" type="number" value="1" step="0.1">q + <input class="form-control" id="c1-input" type="number" value="1" step="0.1">
+            <div class="sliders-group">
+                <label for="a1-slider">a: </label>
+                <input type="range" id="a1-slider" min="-20" max="20" value="1" step="0.1"><span id="a1-value"></span><br>
+                <label for="b1-slider">b: </label>
+                <input type="range" id="b1-slider" min="-30" max="30" value="0" step="0.1"><span id="b1-value"></span>
+                <label for="с1-slider">с: </label>
+                <input type="range" id="c1-slider" min="0" max="30" value="0" step="0.1"><span id="c1-value"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</htm
