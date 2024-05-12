@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
     <link rel="stylesheet" type="text/css" href="firms_behaviour_styles.css"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
      <!-- Bootstrap CSS -->
@@ -10,31 +13,86 @@
     <title>Document</title>
 </head>
 <body>
-    <canvas id="graphCanvas" width="1000" height="400"></canvas>
-    <script src="application.js"></script>
-    <canvas id="graphCanvas1" width="500" height="450" ></canvas>
-    <script src="application.js"></script>
-    <div class="bottom-controls">
-        <button onclick="window.location.href='index.html'">Назад</button>
-        <div class="input-group">
-            Спрос: p = <input class="form-control" id="a-input" type="number" value="1" step="0.1"> - <input class="form-control" id="b-input" type="number" value="0" step="0.1">q
-            <div class="sliders-group">
-                <label for="a-slider">a: </label>
-                <input type="range" id="a-slider" min="0" max="20" value="1" step="0.1"><span id="a-value"></span><br>
-                <label for="b-slider">b: </label>
-                <input type="range" id="b-slider" min="0" max="30" value="0" step="0.1"><span id="b-value"></span>
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="container-fluid" style="border-color: white; box-shadow: none;">
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <!-- <canvas id="graphCanvas" width="1000" height="400"></canvas> -->
+                            <div id="plot"></div>
+                            <script src="application1.js"></script>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class="col-md-auto">
+                            <canvas id="graphCanvas1" width="500" height="450"></canvas>
+                            <script src="application.js"></script>
+                        </div>
+                        <div class="col-md-auto">
+                            <div class = "container" style="border-color: white; box-shadow: none;">
+                                <p>Равновесная цена: <span id="p_equilibrium"></span></p>
+                                <p>Равновесное количество <span id="q_equilibrium"></span></p>
+                                <p>Излишек потребителя <span id="CS"></span></p>
+                                <p>Излишек производителя <span id="PS"></span></p>
+                                <p>Прибыль <span id="profit"></span></p>
+                                <script src="application.js"></script>
+                            </div>
+                        </div>
+                            
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="input-group">Издержки: TC = <input class="form-control" id="a1-input" type="number" value="1" step="0.1">q^2 + <input class="form-control" id="b1-input" type="number" value="1" step="0.1">q + <input class="form-control" id="c1-input" type="number" value="1" step="0.1">
-            <div class="sliders-group">
-                <label for="a1-slider">a: </label>
-                <input type="range" id="a1-slider" min="-20" max="20" value="1" step="0.1"><span id="a1-value"></span><br>
-                <label for="b1-slider">b: </label>
-                <input type="range" id="b1-slider" min="-30" max="30" value="0" step="0.1"><span id="b1-value"></span>
-                <label for="с1-slider">с: </label>
-                <input type="range" id="c1-slider" min="0" max="30" value="0" step="0.1"><span id="c1-value"></span>
+            <div class="col">
+                    <div class = "container">
+                        <div class = "row">
+                            <div class = "col"><h3 style="text-align: center;">ТEОРИЯ</h3></div>
+                        </div>
+                        <div class = "row">
+                        <div class="col">
+                        <div id="text-container">
+                            <div class="text-content" style="display: block;"> <p>Текст страницы 1 lkjlk jl jf sgw ewgw we gw gew gwe gwe gwe g ewg ewg ew gew gew g ewg ewg we gew g</p></div>
+                            <div class="text-content" style="display: none;">Текст страницы 2</div>
+                            <div class="text-content" style="display: none;">Текст страницы 3</div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class = "row">
+                        <div class="col">
+                        <div class="container" style="text-align: center; border-color: white; box-shadow: none;">
+                            <button id="prev" style="background-color: gray;" >Назад</button>
+                            <button id="next" style="background-color: gray;"> Вперед</button>
+                        </div>
+                        </div>
+                        </div>
+                        <script src="theory.js"></script>
+                    </div>
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-auto">
+                <button onclick="window.location.href='index.html'">Назад</button>
+            </div>
+            <div class="col">
+                    Спрос: p = <input id="a-input" type="number" value="0" step="0.1"> - <input id="b-input" type="number" value="0" step="0.1"> q <br>
+                    <label for="a-slider">a: </label>
+                        <input type="range" id="a-slider" min="0" max="20" value="0" step="0.1"><span id="a-value"></span><br>
+                    <label for="b-slider">b: </label>
+                        <input type="range" id="b-slider" min="0" max="30" value="0" step="0.1"><span id="b-value"></span>        
+            </div>
+            <div class="col">
+                Издержки: TC = <input id="a1-input" type="number" value="0" step="0.1" style="width: 100px;"> q^2 + <input id="b1-input" type="number" value="0" step="0.1" style="width: 100px;"> q + <input id="c1-input" type="number" value="0" step="0.1" style="width: 100px;"> <br>
+                <label for="a1-slider">a: </label>
+                        <input type="range" id="a1-slider" min="0" max="20" value="0" step="0.1"><span id="a1-value"></span><br>
+                        <label for="b1-slider">b: </label>
+                        <input type="range" id="b1-slider" min="-30" max="30" value="0" step="0.1"><span id="b1-value"></span><br>
+                        <label for="с1-slider">с: </label>
+                        <input type="range" id="c1-slider" min="0" max="30" value="0" step="0.1"><span id="c1-value"></span>
+            </div>
+    </div>
 </body>
 </htm
+
+<!-- style="border:3px solid #030000; -->
