@@ -6,6 +6,7 @@
     <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" type="text/css" href="firms_behaviour_styles.css"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
      <!-- Bootstrap CSS -->
@@ -23,20 +24,26 @@
                             <div id="plot"></div>
                             <script src="application1.js"></script>
                         </div>
+                        <div class="col-md-auto">
+                            <!-- <canvas id="graphCanvas" width="1000" height="400"></canvas> -->
+                            <div id="plot1"></div>
+                            <script src="application1.js"></script>
+                        </div>
                     </div>
                     <div class = "row">
                         <div class="col-md-auto">
-                            <canvas id="graphCanvas1" width="500" height="450"></canvas>
-                            <script src="application.js"></script>
+                            <!-- <canvas id="graphCanvas1" width="500" height="450"></canvas> -->
+                            <div id="plot2"></div>
+                            <script src="application1.js"></script>
                         </div>
                         <div class="col-md-auto">
                             <div class = "container" style="border-color: white; box-shadow: none;">
-                                <p>Равновесная цена: <span id="p_equilibrium"></span></p>
-                                <p>Равновесное количество <span id="q_equilibrium"></span></p>
-                                <p>Излишек потребителя <span id="CS"></span></p>
-                                <p>Излишек производителя <span id="PS"></span></p>
-                                <p>Прибыль <span id="profit"></span></p>
-                                <script src="application.js"></script>
+                                <p>Равновесная цена: \(p^*\) = <span id="p_equilibrium"></span></p>
+                                <p>Равновесное количество: \(q^*\) = <span id="q_equilibrium"></span></p>
+                                <p>Излишек потребителя: \(CS\) = <span id="CS"></span></p>
+                                <p>Излишек производителя: \(PS\) = <span id="PS"></span></p>
+                                <p>Прибыль: \(\Pi\) = <span id="profit"></span></p>
+                                <script src="application1.js"></script>
                             </div>
                         </div>
                             
@@ -46,13 +53,16 @@
             <div class="col">
                     <div class = "container">
                         <div class = "row">
-                            <div class = "col"><h3 style="text-align: center;">ТEОРИЯ</h3></div>
+                            <div class = "col"><h3 style="text-align: center; font-family: Times New Roman">ТEОРИЯ</h3></div>
                         </div>
                         <div class = "row">
                         <div class="col">
                         <div id="text-container">
-                            <div class="text-content" style="display: block;"> <p>Текст страницы 1 lkjlk jl jf sgw ewgw we gw gew gwe gwe gwe g ewg ewg ew gew gew g ewg ewg we gew g</p></div>
-                            <div class="text-content" style="display: none;">Текст страницы 2</div>
+                            <div class="text-content" style="display: block; overflow: scroll;"> <p style="font-family: Times New Roman">Рассмотрим фирму на рынке с совершенной конкуренцией и с заданной обратной функцией спроса вида \(p^D = a - bq\) (\(p\), \(q\) - цена и количество товара соотвественно). <br>
+                                Задача фирмы – максимизация прибыли. Прибыль для фирмы есть её выручка (цена товара • количество товара) за вычетом издержек, функция которых задается в нашем случае как TC (Total Costs) = \(a_1q^2 + b_1q + c_1.\) Таким образом: $$\Pi = TR - TC = pq - (a_1q^2 + b_1q + c_1)$$
+                                Для максимизации воспользуемся условием первого порядка, которое говорит что экстремум достигается при равенстве нулю первой производной по q (First Order Condition) или \(F.O.C\): $$\frac{d}{dq} \Pi = MR - MC = p - MC = 0$$ $$p = MC$$ Здесь \(MC\) – Предельные издержки (Marginal Costs), а \(MR\) - предельный доход (Marginal Revenue). 
+                                Это производные \(TC\) и \(TR\) по \(q\) соответственно. <br> Для строгости необходимо еще условие второго порядка, утверждающее, что максимум достигается при отрицательной второй производной.</p></div>
+                            <div class="text-content" style="display: none;"><p style="font-family: Times New Roman">В нашем случае параметр \(a_1\) принимает только неотрицательные значения, поэтому: $$\frac{d}{dq}(MR - MC) = \frac{d}{dq} (-2a_1q) = -2a_1 \leq 0 $$</p></div>
                             <div class="text-content" style="display: none;">Текст страницы 3</div>
                         </div>
                         </div>
@@ -76,23 +86,21 @@
                 <button onclick="window.location.href='index.html'">Назад</button>
             </div>
             <div class="col">
-                    Спрос: p = <input id="a-input" type="number" value="0" step="0.1"> - <input id="b-input" type="number" value="0" step="0.1"> q <br>
+                    Спрос: \(p^D\) = <input id="a-input" type="number" value="0" step="0.1"> - <input id="b-input" type="number" value="0" step="0.1"> \(q\) <br>
                     <label for="a-slider">a: </label>
                         <input type="range" id="a-slider" min="0" max="20" value="0" step="0.1"><span id="a-value"></span><br>
                     <label for="b-slider">b: </label>
                         <input type="range" id="b-slider" min="0" max="30" value="0" step="0.1"><span id="b-value"></span>        
             </div>
             <div class="col">
-                Издержки: TC = <input id="a1-input" type="number" value="0" step="0.1" style="width: 100px;"> q^2 + <input id="b1-input" type="number" value="0" step="0.1" style="width: 100px;"> q + <input id="c1-input" type="number" value="0" step="0.1" style="width: 100px;"> <br>
+                Издержки: TC = <input id="a1-input" type="number" value="0" step="0.1" style="width: 100px;"> \(q^2 \)+ <input id="b1-input" type="number" value="0" step="0.1" style="width: 100px;"> \(q\) + <input id="c1-input" type="number" value="0" step="0.1" style="width: 100px;"> <br>
                 <label for="a1-slider">a: </label>
                         <input type="range" id="a1-slider" min="0" max="20" value="0" step="0.1"><span id="a1-value"></span><br>
                         <label for="b1-slider">b: </label>
-                        <input type="range" id="b1-slider" min="-30" max="30" value="0" step="0.1"><span id="b1-value"></span><br>
+                        <input type="range" id="b1-slider" min="0" max="30" value="0" step="0.1"><span id="b1-value"></span><br>
                         <label for="с1-slider">с: </label>
                         <input type="range" id="c1-slider" min="0" max="30" value="0" step="0.1"><span id="c1-value"></span>
             </div>
     </div>
 </body>
-</htm
-
-<!-- style="border:3px solid #030000; -->
+</htm>

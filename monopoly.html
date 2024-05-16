@@ -1,32 +1,100 @@
-
 <!DOCTYPE html>
- <html>
- <head>
-   <meta charset="UTF-8"> 
-   <title>Монополистическая конкуренция</title> 
-   <link rel="stylesheet" type="text/css" href="firms_behaviour_styles.css"> 
-   <script type="module" src="application.js"></script>
-</head> 
-  <body>
-    <div class="container">
-    <h1>Монополистическая конкуренция</h1> 
-    <p> Приветствую! </p> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="firms_behaviour_styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="container-fluid" style="border-color: white; box-shadow: none;">
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <div id="plot_m"></div>
+                            <script src="application2.js"></script>
+                        </div>
+                        <div class="col-md-auto">
+                            <div id="plot1_m"></div>
+                            <script src="application2.js"></script>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class="col-md-auto">
+                            <div id="plot2_m"></div>
+                            <script src="application2.js"></script>
+                        </div>
+                        <div class="col-md-auto">
+                            <div class = "container" style="border-color: white; box-shadow: none;">
+                                <p>Равновесная цена: \(p^*\) = <span id="p_equilibrium"></span></p>
+                                <p>Равновесное количество: \(q^*\) = <span id="q_equilibrium"></span></p>
+                                <p>Излишек потребителя: \(CS\) = <span id="CS"></span></p>
+                                <p>Излишек производителя: \(PS\) = <span id="PS"></span></p>
+                                <p>Прибыль: \(\Pi\) = <span id="profit"></span></p>
+                                <script src="application2.js"></script>
+                            </div>
+                        </div>
+                            
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                    <div class = "container">
+                        <div class = "row">
+                            <div class = "col"><h3 style="text-align: center; font-family: Times New Roman">ТEОРИЯ</h3></div>
+                        </div>
+                        <div class = "row">
+                        <div class="col">
+                        <div id="text-container">
+                            <div class="text-content" style="display: block; overflow: scroll;"> <p style="font-family: Times New Roman">Текст страницы 1</p></div>
+                            <div class="text-content" style="display: none;"><p style="font-family: Times New Roman">Текст страницы 2</p></div>
+                            <div class="text-content" style="display: none;">Текст страницы 3</div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class = "row">
+                        <div class="col">
+                        <div class="container" style="text-align: center; border-color: white; box-shadow: none;">
+                            <button id="prev" style="background-color: gray;" >Назад</button>
+                            <button id="next" style="background-color: gray;"> Вперед</button>
+                        </div>
+                        </div>
+                        </div>
+                        <script src="theory.js"></script>
+                    </div>
+            </div>
+        </div>
     </div>
-
-    <div class="background-image"></div>
-
-    <div class="container">
-    <h1>Выберите нужную вам опцию</h1>
-    <button onclick="myFunction()">Совершенная конкуренция</button>
-    <button onclick="myFunction()">Монополистическая конкуренция</button>
-    <button onclick="myFunction()">КПВ - кривая производственных возможностей</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-auto">
+                <button onclick="window.location.href='index.html'">Назад</button>
+            </div>
+            <div class="col">
+                    Спрос: \(p^D\) = <input id="a-input" type="number" value="0" step="0.1"> - <input id="b-input" type="number" value="0" step="0.1"> \(q\) <br>
+                    <label for="a-slider">a: </label>
+                        <input type="range" id="a-slider" min="0" max="20" value="0" step="0.1"><span id="a-value"></span><br>
+                    <label for="b-slider">b: </label>
+                        <input type="range" id="b-slider" min="0" max="30" value="0" step="0.1"><span id="b-value"></span>        
+            </div>
+            <div class="col">
+                Издержки: TC = <input id="a1-input" type="number" value="0" step="0.1" style="width: 100px;"> \(q^2 \)+ <input id="b1-input" type="number" value="0" step="0.1" style="width: 100px;"> \(q\) + <input id="c1-input" type="number" value="0" step="0.1" style="width: 100px;"> <br>
+                <label for="a1-slider">a: </label>
+                        <input type="range" id="a1-slider" min="0" max="20" value="0" step="0.1"><span id="a1-value"></span><br>
+                        <label for="b1-slider">b: </label>
+                        <input type="range" id="b1-slider" min="0" max="30" value="0" step="0.1"><span id="b1-value"></span><br>
+                        <label for="с1-slider">с: </label>
+                        <input type="range" id="c1-slider" min="0" max="30" value="0" step="0.1"><span id="c1-value"></span>
+            </div>
     </div>
-
-   <script>
-    // JavaScript код
-    function myFunction() {
-      alert("В процессе разработки!");
-    }
-   </script>
-  </body> 
-</html> 
+</body>
+</htm>
