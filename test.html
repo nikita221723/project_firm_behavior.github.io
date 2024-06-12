@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+        }
+        .input-container, .summary-container {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 45%;
+        }
+        .summary-container {
+            overflow-y: auto;
+            max-height: 400px;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .summary-item button {
+            margin-left: 10px;
+            padding: 3px 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Input Summary</h1>
+    <div class="container">
+        <div class="input-container">
+            <label for="userInput">Enter information:</label>
+            <input type="text" id="userInput" name="userInput">
+            <button id="submitButton">Submit</button>
+        </div>
+        <div class="summary-container" id="summaryContainer">
+            <h2>Summary</h2>
+            <div id="summaryList"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function() {
+            const userInput = document.getElementById('userInput').value;
+            if (userInput.trim() !== "") {
+                addSummaryItem(userInput);
+                document.getElementById('userInput').value = '';
+            }
+        });
+
+        function addSummaryItem(text) {
+            const summaryList = document.getElementById('summaryList');
+            const summaryItem = document.createElement('div');
+            summaryItem.className = 'summary-item';
+            
+            const itemText = document.createElement('span');
+            itemText.textContent = text;
+            summaryItem.appendChild(itemText);
+            
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', function() {
+                summaryList.removeChild(summaryItem);
+            });
+            summaryItem.appendChild(removeButton);
+            
+            summaryList.appendChild(summaryItem);
+        }
+    </script>
+</body>
+</html>

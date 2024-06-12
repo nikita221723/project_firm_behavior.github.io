@@ -1,32 +1,121 @@
-
 <!DOCTYPE html>
- <html>
- <head>
-   <meta charset="UTF-8"> 
-   <title>Кривая производственных возможностей</title> 
-   <link rel="stylesheet" type="text/css" href="firms_behaviour_styles.css"> 
-   <script type="module" src="application.js"></script>
-</head> 
-  <body>
-    <div class="container">
-    <h1>Кривая производственных возможностей</h1> 
-    <p> Приветствую! </p> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="firms_behaviour_styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col-md-auto"> 
+                <div class="container-fluid" style="border-color: white; box-shadow: none;">
+                    <div class="row">
+                      <div class="col-md-auto"> 
+                            <div id="plot_ppf1"></div>
+                            <script src="application3.js"></script>
+                      </div>
+                    </div>
+                    <div class = "row">
+                      <div class = "col-md-auto">
+
+                        <div id="plot_ppf2"></div>
+                        <script src="application3.js"></script>
+
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+              <div class="container-fluid" style="border-color: white; box-shadow: none;">
+                <div class = "row">
+                  <div class = "col-md-auto">
+
+                    <div id="plot_sum_ppf"></div>
+                    <script src="application3.js"></script>
+
+                  </div>
+                  <div class = "col-md-auto">
+
+                    <div id="plot_sum_pps"></div>
+                    <script src="application3.js"></script>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                    <div class = "container">
+                        <div class = "row">
+                            <div class = "col"><h3 style="text-align: center; font-family: Times New Roman">ТEОРИЯ</h3></div>
+                        </div>
+                        <div class = "row">
+                          <div class="col">
+                            <div id="text-container">
+                              <div class="text-content" style="display: block; overflow: scroll;"> <p style="font-family: Times New Roman">Рассмотрим две фирмы, каждая из которых имеет \(L_1\) и \(L_2\) единиц труда соответственно и производит два товара (\(x_1, x_2\) и \(y_1, y_2\) для 1-й и 2-й соответственно).
+                                Функции производства товаров выглядят следующим образом: $$x_1 = a_{11}L_{11}^{p_{11}} \ x_2 = a_{12}L_{12}^{p_{12}} $$
+                                $$y_1 = a_{21}L_{21}^{p_{21}} \ y_2 = a_{22}L_{22}^{p_{22}} $$
+                                Рассмотрим следующее ограничение фирм:
+                                $$L_{11} + L_{12} \leq L_1$$
+                                $$L_{21} + L_{22} \leq L_2$$
+                                Выражая товары через единицы труда получаем:
+                                $$\left(\frac{x_1}{a_{11}}\right)^{\frac{1}{p_{11}}} + \left(\frac{x_2}{a_{12}}\right)^{\frac{1}{p_{12}}} \leq L_1 \ (1) $$
+                                $$\left(\frac{Y_1}{a_{21}}\right)^{\frac{1}{p_{21}}} + \left(\frac{Y_2}{a_{22}}\right)^{\frac{1}{p_{22}}} \leq L_2 \ (2)$$
+                                Кривая произвдственных возможностей (КПВ или Production Possibility Frontier (PPF)) это граница множества производственных возможностей (PPS или МПВ), которое представляет собой все возможные комбинации товаров, доступные фирме.
+                                Таким образом неравенства (1) и (2) описывают МПВ, а КПВ будет случай знака равенства в формулах (1) и (2).
+                              </p></div>
+                              <div class="text-content" style="display: none;"><p style="font-family: Times New Roman">Графики КПВ строятся в координатах двух товаров, которые производят фирмы. Мы получаем своеобразное "бюджетное ограничение". 
+                                Заметим важное свойство КПВ: это убывающий график от точки \((0, \max(x_2))\) до \((\max(x_1), 0)\) (для второй фирмы \(y_2, y_1) \) соответственно, так как при увеличении производства первого товара, необходимо сократить производство второго товара. <br> 
+                                Это свойство связано с альтернативными издержками: "сколько единиц второго товара 2 мы можем получить, отказавшись от одного товара 1". <br>
+                                <br>
+                                Пусть мы знаем производственные возможности обеих фирм и хотим узнать совокупные производственные возможности. Необходимо выполнить операцию сложения КПВ, которая по сути является оптимизационной задачей, так как нам нужно выбрать 
+                                какой товар и в каком количестве мы должно производить на каждой КПВ, чтобы эффективно использовать эти производственные возможности. Для этого воспользуемся векторным сложением: просуммируем все точки \((x_1, x_2)\) со всеми точками \((y_1, y_2)\).
+                                Множество получившихся точек будут нам доступны, они составляют совокупное множество производственных возможностей обеих фирм.
+                              </p></div>
+                              <div class="text-content" style="display: none;"><p style="font-family: Times New Roman"> Чтобы выделить PPF, просто пройдемся по всем точкам во множестве $$ sum_1 = \underset{0 \leq i \leq \max(x_1) \ 0 \leq j \leq \max(y_1)}{\{(i + j)\}} $$ и возьмем максимум соответствующим сумм вторых товаров
+                                $$sum_2(sum_1) = \underset{i + j = sum_1 0 \leq i \leq \max(x_1) \ 0 \leq j \leq \max(y_1)}{\max(\{x_2(i) + y_2(j)\})}$$ Таким образом, на графике "Sum of Prodcution Possibility Frontiers" визуализован результат такого метода сложения КПВ.</p></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class = "row">
+                          <div class="col">
+                            <div class="container" style="text-align: center; border-color: white; box-shadow: none;">
+                              <button id="prev" style="border-radius: 8px" >Назад</button>
+                              <button id="next" style="border-radius: 8px"> Вперед</button>
+                            </div>
+                          </div>
+                        </div>
+                        <script src="theory.js"></script>
+                    </div>
+                    
+              </div>
+          </div>
+      </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-auto">
+              <br>
+                <button onclick="window.location.href='index.html'" style="border-radius: 8px">Назад</button>
+            </div>
+            <div class="col">
+                      <p style="text-align: center; font-size: large;">фирма 1</p>
+                      <p style="font-size: large;">\(L\) (ед. труда): \(L\) \(=\) <input id="L1-input" type="number" value="10" style="width: 70px;" step="1"> \(x_1 =\) <input id="a1-input" type="number" value="1" style="width: 70px;" step="0.1"> \(L\)<sup><input id="pow-a1-input" type="number" value="1" style="width: 50px;" step="0.1"></sup>
+                      \(x_2 =\) <input id="b1-input" type="number" value="1" style="width: 70px;" step="0.1"> \(L\)<sup><input id="pow-b1-input" type="number" value="1" style="width: 50px;" step="0.1"></sup></p>   
+            </div>
+            <div class="col">
+              <p style="text-align: center; font-size: large;">фирма 2</p>
+              <p style="font-size: large;">\(L\) (ед. труда): L \(=\) <input id="L2-input" type="number" value="16" style="width: 70px; " step="1">  \(y_1 = \) <input id="a2-input" type="number" value="1" style="width: 70px;" step="0.1"> \(L\)<sup><input id="pow-a2-input" type="number" value="0.5" style="width: 50px;" step="0.1"></sup>
+              \(y_2 = \) <input id="b2-input" type="number" value="1" style="width: 70px;" step="0.1"> \(L\)<sup><input id="pow-b2-input" type="number" value="0.5" style="width: 50px;" step="0.1"></sup></p> 
+            </div>
+        </div>
     </div>
-
-    <div class="background-image"></div>
-
-    <div class="container">
-    <h1>Выберите нужную вам опцию</h1>
-    <button onclick="myFunction()">Совершенная конкуренция</button>
-    <button onclick="myFunction()">Монополистическая конкуренция</button>
-    <button onclick="myFunction()">КПВ - кривая производственных возможностей</button>
-    </div>
-
-   <script>
-    // JavaScript код
-    function myFunction() {
-      alert("В процессе разработки!");
-    }
-   </script>
-  </body> 
-</html> 
+</body>
+</htm>
