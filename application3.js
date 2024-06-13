@@ -14,6 +14,13 @@ document.addEventListener('DOMContentLoaded', () => { //функция кото�
     let trace1Data = { x: [], y: [] }; //здесь будет информация о первой КПВ
     let trace2Data = { x: [], y: [] }; //здесь будет информация о второй КПВ
 
+    function LaunchFunctions() {
+        plotFunction1();
+        plotFunction2();
+        plotSumPPF();
+        plotPPS();
+    }
+
     function plotFunction1() {//функция первой КПВ
         x2_max_1 = (Math.pow(L1, pow_b1) * b1).toFixed(1); //формула для максимального количество товара 2
         x1_max_1 = Math.pow(L1, pow_a1) * a1; //формула для максимального количество товара >
@@ -204,10 +211,7 @@ document.addEventListener('DOMContentLoaded', () => { //функция кото�
         pow_a2 = parseFloat(document.getElementById('pow-a2-input').value);
         b2 = parseFloat(document.getElementById('b2-input').value);
         pow_b2 = parseFloat(document.getElementById('pow-b2-input').value);
-        plotFunction1(); // запускаем функции с обновленными параметрами 
-        plotFunction2();
-        plotSumPPF();
-        plotPPS();
+        LaunchFunctions()
     }
     //при любом обнаружении изменений параметров запускаем функцию обновления 
     document.getElementById('a1-input').addEventListener('input', (e) => {
@@ -242,8 +246,5 @@ document.addEventListener('DOMContentLoaded', () => { //функция кото�
         updateGraphParameters()
     });
     //рисуем начальные графики 
-    plotFunction1();
-    plotFunction2();
-    plotSumPPF();
-    plotPPS();
+    LaunchFunctions()
 });

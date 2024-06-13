@@ -1,10 +1,7 @@
 body {
   font-family: 'Times New Roman', serif;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.9), 
-      rgba(255, 255, 255, 0.9)
-    ), 
-    url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDJ8fGVjb25vbWljfGVufDB8fHx8MTY0ODgxMzkyMg&ixlib=rb-1.2.1&q=80&w=1920'); /* Economics-related background image */
+  background:
+    url('https://sun9-14.userapi.com/impg/iVKXr8bNqzesqrS91HNOgTKnQkEPZuW2xLjHTg/IxJHuOhO4K4.jpg?size=716x541&quality=96&sign=de8f75d1b1043c2dadb9805f2da88a39&type=album'); /* Economics-related background image */
   background-size: cover;
   background-position: center;
   color: #333;
