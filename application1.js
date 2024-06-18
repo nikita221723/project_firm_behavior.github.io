@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => { //функция обра�
         eq_quantity(); // равновесное количество вызываем 
         producer_surplus(); // излишки
         consumer_surplus();
+        if (p_equilibrium <= 0) {
+          prof = -1 * c1;
+          console.log(prof)
+        }
         profit(); //прибыль
     }
     function plotFunction() { // первый график, строящий Total Costs (TC), Total Revenue (TR) и max(TR - TC)
@@ -316,24 +320,23 @@ document.addEventListener('DOMContentLoaded', () => { //функция обра�
     c1 = 30
     updateGraphParametersFromExamples(a, b, a1, b1, c1)
     });
-  });
 
-function eq_price() { //равновесная цена  
-    document.getElementById("p_equilibrium").textContent = p_equilibrium.toFixed(2); //выводим наши измененные глобальные переменные в прошлых функциях вывод в точности до 2-х знаков после запятой 
-}
-  function eq_quantity() { //равновесная цена 
-    if (p_equilibrium <= 0) q_equilibrium = 0;
-    document.getElementById("q_equilibrium").textContent = q_equilibrium.toFixed(2); 
-}
-function producer_surplus() { //излишек производителя
-  if (p_equilibrium <= 0) ps = 0; 
-  document.getElementById("PS").textContent = ps.toFixed(2);  
-}
-function consumer_surplus() { //излишек потребителя
-  if (p_equilibrium <= 0) cs = 0;
-  document.getElementById("CS").textContent = cs.toFixed(2);
-}
-function profit() { //излишек потребителя
-  if (p_equilibrium <= 0) prof = 0;
-  document.getElementById("profit").textContent = prof.toFixed(2);
-}
+    function eq_price() { //равновесная цена  
+      document.getElementById("p_equilibrium").textContent = p_equilibrium.toFixed(2); //выводим наши измененные глобальные переменные в прошлых функциях вывод в точности до 2-х знаков после запятой 
+  }
+    function eq_quantity() { //равновесная цена 
+      if (p_equilibrium <= 0) q_equilibrium = 0;
+      document.getElementById("q_equilibrium").textContent = q_equilibrium.toFixed(2); 
+  }
+  function producer_surplus() { //излишек производителя
+    if (p_equilibrium <= 0) ps = 0; 
+    document.getElementById("PS").textContent = ps.toFixed(2);  
+  }
+  function consumer_surplus() { //излишек потребителя
+    if (p_equilibrium <= 0) cs = 0;
+    document.getElementById("CS").textContent = cs.toFixed(2);
+  }
+  function profit() { //излишек потребителя
+    document.getElementById("profit").textContent = prof.toFixed(2);
+  }
+  });

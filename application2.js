@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => { //функция обра�
       eq_quantity(); // равновесное количество вызываем 
       producer_surplus(); // излишки
       consumer_surplus();
+      if (p_equilibrium <= 0) {
+        prof = -1 * c1;
+      }
       profit(); //прибыль
   }
     function plotFunction() { //функция для графика TC, TR, max TR - TC, Profit 
@@ -300,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => { //функция обра�
     document.getElementById('c1-slider').value = c1
     LaunchFunctions()
   }
-  document.getElementById('example1m').addEventListener('click', function() { // параметры для примера 2
+  document.getElementById('example1').addEventListener('click', function() { // параметры для примера 2
     a = 8
     b = 2
     a1 = 0.5
@@ -308,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => { //функция обра�
     c1 = 6
     updateGraphParametersFromExamples(a, b, a1, b1, c1)
     });
-  document.getElementById('example2m').addEventListener('click', function() { // параметры для примера 2
+  document.getElementById('example2').addEventListener('click', function() { // параметры для примера 2
     a = 26
     b = 2
     a1 = 1
@@ -316,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => { //функция обра�
     c1 = 0
     updateGraphParametersFromExamples(a, b, a1, b1, c1)
     });
-  document.getElementById('example3m').addEventListener('click', function() { // параметры для примера 2
+  document.getElementById('example3').addEventListener('click', function() { // параметры для примера 2
     a = 30
     b = 2
     a1 = 0
@@ -324,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => { //функция обра�
     c1 = 6
     updateGraphParametersFromExamples(a, b, a1, b1, c1)
     });
-  document.getElementById('example4m').addEventListener('click', function() { // параметры для примера 2
+  document.getElementById('example4').addEventListener('click', function() { // параметры для примера 2
     a = 20
     b = 2
     a1 = 0.5
@@ -332,24 +335,22 @@ document.addEventListener('DOMContentLoaded', () => { //функция обра�
     c1 = 30
     updateGraphParametersFromExamples(a, b, a1, b1, c1)
     });
+    function eq_price() { //равновесная цена 
+      document.getElementById("p_equilibrium").textContent = p_equilibrium.toFixed(2); //выводим наши измененные глобальные переменные в прошлых функциях вывод в точности до 2-х знаков после запятой 
+  }
+    function eq_quantity() { //равновесная цена 
+      if (p_equilibrium <= 0) q_equilibrium = 0; //костылек небольшой 
+      document.getElementById("q_equilibrium").textContent = q_equilibrium.toFixed(2);
+  }
+  function producer_surplus() { //излишек производителя
+    if (p_equilibrium <= 0) ps = 0;
+    document.getElementById("PS").textContent = ps.toFixed(2);
+  }
+  function consumer_surplus() { //излишек потребителя
+    if (p_equilibrium <= 0) cs = 0;
+    document.getElementById("CS").textContent = cs.toFixed(2);
+  }
+  function profit() { //излишек потребителя
+    document.getElementById("profit").textContent = prof.toFixed(2);
+  }
   });
-
-function eq_price() { //равновесная цена 
-    document.getElementById("p_equilibrium").textContent = p_equilibrium.toFixed(2); //выводим наши измененные глобальные переменные в прошлых функциях вывод в точности до 2-х знаков после запятой 
-}
-  function eq_quantity() { //равновесная цена 
-    if (p_equilibrium <= 0) q_equilibrium = 0; //костылек небольшой 
-    document.getElementById("q_equilibrium").textContent = q_equilibrium.toFixed(2);
-}
-function producer_surplus() { //излишек производителя
-  if (p_equilibrium <= 0) ps = 0;
-  document.getElementById("PS").textContent = ps.toFixed(2);
-}
-function consumer_surplus() { //излишек потребителя
-  if (p_equilibrium <= 0) cs = 0;
-  document.getElementById("CS").textContent = cs.toFixed(2);
-}
-function profit() { //излишек потребителя
-  if (p_equilibrium <= 0) prof = 0;
-  document.getElementById("profit").textContent = prof.toFixed(2);
-}
